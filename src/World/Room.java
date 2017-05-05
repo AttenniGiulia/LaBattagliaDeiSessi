@@ -1,4 +1,7 @@
-package People;
+package World;
+
+import People.CannotHaveChildrenException;
+import People.Person;
 
 /**
  * Created by Giulia on 05/05/2017.

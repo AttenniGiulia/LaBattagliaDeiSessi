@@ -1,4 +1,5 @@
 package People;
+import static People.People.a;
 import static People.People.funeral;
 /**
  * Created by Giulia on 05/05/2017.
@@ -32,7 +33,8 @@ public class BadBoy extends Thread implements Person {
     public void hasChild(Person person) throws CannotHaveChildrenException {
         if(MaxNumChildren==0) throw new CannotHaveChildrenException();
         MaxNumChildren--;
-        // assegnare costi
+        // Assegnamento costi
+        lifePoints += a;
     }
 
 

@@ -8,6 +8,7 @@ import java.util.Set;
  */
 public class People {
     static Set<Person> peopleInTheWorld = new HashSet<Person>();
+    static int a, b, c;
 
     public static void childHasBorn(Person person){
         peopleInTheWorld.add(person);

@@ -2,8 +2,7 @@ package People;
 
 import java.util.Random;
 
-import static People.People.childHasBorn;
-import static People.People.funeral;
+import static People.People.*;
 
 /**
  * Created by Giulia on 05/05/2017.
@@ -57,7 +56,7 @@ public class BadGirl extends Thread implements Person {
                 child = new BadBoy();
             }
             // Assegnamento costi
-
+            lifePoints += a - b/2;
         }
         else{
             //false = female
@@ -74,6 +73,7 @@ public class BadGirl extends Thread implements Person {
                 childWithBad = true;
             }
             // Assegnamento costi
+            lifePoints -= b;
         }
         childHasBorn(child);
         child.start();

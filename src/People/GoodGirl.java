@@ -2,8 +2,7 @@ package People;
 
 import java.util.Random;
 
-import static People.People.funeral;
-import static People.People.childHasBorn;
+import static People.People.*;
 
 /**
  * Created by Giulia on 04/05/2017.
@@ -80,7 +79,7 @@ public class GoodGirl extends Thread implements Person{
         this.MaxNumChildren--;
 
         // Assegnamento dei costi
-        lifePoints += 2;
+        lifePoints += a - b/2 - c;
 
 
     }

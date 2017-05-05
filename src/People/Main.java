@@ -1,20 +1,29 @@
 package People;
 
+import World.Room;
+import static People.People.a;
+import static People.People.b;
+import static People.People.c;
+
 /**
  * Created by Giulia on 04/05/2017.
  */
 public class Main {
     public static void main(String[] args){
-
+        a = 15;
+        b = 20;
+        c = 3;
         GoodBoy goodBoy = new GoodBoy();
         GoodGirl goodGirl = new GoodGirl();
         BadBoy badBoy = new BadBoy();
         BadGirl badGirl = new BadGirl();
         goodBoy.start();
         goodGirl.start();
+        badBoy.start();
+        badGirl.start();
         Room r = new Room();
 
-        /*
+
         // test per goodGirl
         r.meeting(goodGirl, goodGirl);
         System.out.println("---------------------");
@@ -27,7 +36,7 @@ public class Main {
 
         // test per goodBoy
         r.meeting(goodBoy, goodGirl);
-        System.out.println("---------------------");*/
+        System.out.println("---------------------");
         r.meeting(goodBoy, badGirl);
         System.out.println("---------------------");
         r.meeting(goodBoy, goodBoy);

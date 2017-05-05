@@ -42,7 +42,8 @@ public class GoodBoy extends Thread implements Person{
         else lifePoints += a - b/2;
     }
 
-
-
+    public int happiness() {
+        return lifePoints;
+    }
 
 }

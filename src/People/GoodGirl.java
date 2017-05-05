@@ -84,4 +84,9 @@ public class GoodGirl extends Thread implements Person{
 
     }
 
+    public int happiness() {
+        return lifePoints;
+    }
+
+
 }

@@ -34,9 +34,13 @@ public class BadBoy extends Thread implements Person {
         if(MaxNumChildren==0) throw new CannotHaveChildrenException();
         MaxNumChildren--;
         // Assegnamento costi
+        System.out.println("I got "+ a + " thanks to " + person.getClass());
         lifePoints += a;
     }
 
+    public int happiness() {
+        return lifePoints;
+    }
 
 
 }

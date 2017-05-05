@@ -14,6 +14,7 @@ public class People {
         peopleInTheWorld.add(person);
     }
     public static void funeral(Person person){
+        System.out.println(person.getClass() +  " got " + person.happiness());
         peopleInTheWorld.remove(person);
         System.out.println(person.getClass() + " has died");
     }

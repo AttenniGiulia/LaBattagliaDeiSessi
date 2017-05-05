@@ -43,35 +43,30 @@ public class BadGirl extends Thread implements Person {
 
 
         Random random = new Random();
-        boolean ChildSex = random.nextBoolean();
+        boolean childSex = random.nextBoolean();
         Person child;
-        if (ChildSex){
+        if (father instanceof GoodBoy){
             //true = male
-            if (father instanceof GoodBoy){
+            if (childSex){
                 child = new GoodBoy();
             }
             else{
-                // La BadGirl se ha già fatto un figlio con un BadBoy non ci ricasca un'altra volta ... forse questa cosa potrebbe sbilanciare la situazione
-                if(childWithBad) throw new CannotHaveChildrenException();
-                child = new BadBoy();
+                child = new GoodGirl();
             }
             // Assegnamento costi
             lifePoints += a - b/2;
         }
         else{
             //false = female
-            if (father instanceof GoodBoy){
-                child = new BadGirl();
+            // La BadGirl se ha già fatto un figlio con un BadBoy non ci ricasca un'altra volta ... forse questa cosa potrebbe sbilanciare la situazione
+            if(childWithBad) throw new CannotHaveChildrenException();
+            if (childSex){
+                child = new BadBoy();
             }
             else{
-                // La BadGirl se ha già fatto un figlio con un BadBoy non ci ricasca un'altra volta ... forse questa cosa potrebbe sbilanciare la situazione
-                if(childWithBad){
-                    System.out.println(this.getClass() + " does not want " + father.getClass() + "  anymore");
-                    throw new CannotHaveChildrenException();
-                }
                 child = new BadGirl();
-                childWithBad = true;
             }
+            childWithBad = true;
             // Assegnamento costi
             lifePoints -= b;
         }
@@ -83,4 +78,9 @@ public class BadGirl extends Thread implements Person {
         this.MaxNumChildren--;
 
     }
+
+    public int happiness() {
+        return lifePoints;
+    }
+
 }

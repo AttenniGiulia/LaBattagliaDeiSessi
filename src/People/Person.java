@@ -9,4 +9,6 @@ public interface Person{
     void hasChild(Person person) throws CannotHaveChildrenException;
 
     void start();
+
+    int happiness();
 }

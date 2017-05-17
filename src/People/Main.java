@@ -21,6 +21,9 @@ public class Main {
         badBoy.start();
         badGirl.start();
 
+        MeetingPoint meetingPoint = new MeetingPoint();
+        meetingPoint.start();
+
 
 
 

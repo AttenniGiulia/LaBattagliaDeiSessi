@@ -1,20 +1,20 @@
 package People;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import static People.People.queueBoys;
 import static People.People.queueGirls;
 
 /**
  * Created by Giulia on 17/05/2017.
  */
-public abstract class MeetingPoint {
+public class MeetingPoint extends Thread{
+
+    public static final int time = 100;
+
     private Person G;
     private Person B;
+    Object bouncer;
 
-
-    MeetingPoint(){
+    public MeetingPoint(){
         G = null;
         B = null;
     }
@@ -24,22 +24,31 @@ public abstract class MeetingPoint {
         else return false;
     }
 
-    public void entry() throws InterruptedException{
-        Thread.currentThread().sleep(2000);
-        while(!queueGirls.isEmpty() || !queueBoys.isEmpty()){
-            while (isBusy()){
-                wait();
-            }
-            if(!queueBoys.isEmpty() && !queueGirls.isEmpty()){
-                if (G == null) G = queueGirls.remove();
-                if (B == null) B = queueBoys.remove();
-                LoveStory loveStory = new LoveStory(G, B);
-                loveStory.start();
-                G = null;
-                B = null;
 
+    public void run(){
+        while(true){
+            while((queueBoys.isEmpty() || queueGirls.isEmpty()) || isBusy()){
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+            B = queueBoys.remove();
+            G = queueGirls.remove();
 
+            LoveStory loveStory = new LoveStory(G,B);
+            loveStory.start();
+
+
+
+
+            try {
+                sleep(time);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 }

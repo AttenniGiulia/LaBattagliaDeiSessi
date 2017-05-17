@@ -24,7 +24,12 @@ public class LoveStory extends Thread {
     }
 
     public void run(){
+        G.setLoveStory(true);
+        B.setLoveStory(true);
         bar();
+        G.setLoveStory(false);
+        B.setLoveStory(false);
+
     }
 
     private void bar() {

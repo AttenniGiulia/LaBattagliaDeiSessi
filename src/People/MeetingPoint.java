@@ -27,26 +27,26 @@ public class MeetingPoint extends Thread{
 
     public void run(){
         while(true){
+
             while((queueBoys.isEmpty() || queueGirls.isEmpty()) || isBusy()){
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
             B = queueBoys.remove();
             G = queueGirls.remove();
-
             LoveStory loveStory = new LoveStory(G,B);
             loveStory.start();
+            G = null;
+            B = null;
 
 
 
 
             try {
-                sleep(time);
+                sleep(time*10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         }
 

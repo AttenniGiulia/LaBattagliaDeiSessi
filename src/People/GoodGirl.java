@@ -11,17 +11,20 @@ public class GoodGirl extends Thread implements Person{
     private int MaxNumChildren;
     private int lifeTime;
     private int lifePoints;
+    private boolean loveStory;
 
     public GoodGirl(){
         MaxNumChildren = 3;
         lifePoints = 0;
         lifeTime = 15000;
+        loveStory = false;
     }
     public void run(){
         long bornTime = System.currentTimeMillis();
         childHasBorn(this);
-        while (System.currentTimeMillis() - bornTime < lifeTime) {
-            findLove(this);
+        System.out.println("Sono GG e cerco amore");
+        findLove(this);
+        while (System.currentTimeMillis() - bornTime < lifeTime && fertility()) {
         }
         funeral(this);
     }
@@ -67,5 +70,9 @@ public class GoodGirl extends Thread implements Person{
         return lifePoints;
     }
 
+    @Override
+    public void setLoveStory(boolean flag) {
+        loveStory = flag;
+    }
 
 }

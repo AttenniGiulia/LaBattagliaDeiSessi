@@ -13,19 +13,30 @@ public class BadGirl extends Thread implements Person {
     private int lifeTime;
     private int lifePoints;
     public boolean childWithBad;
+    public boolean loveStory;
 
     public BadGirl(){
         MaxNumChildren = 5;
         lifePoints = 0;
         lifeTime = 15000;
         childWithBad = false;
+        loveStory = false;
     }
 
     public void run(){
         long bornTime = System.currentTimeMillis();
         childHasBorn(this);
-        while (System.currentTimeMillis() - bornTime < lifeTime) {
-            findLove(this);
+        while (System.currentTimeMillis() - bornTime < lifeTime && fertility()) {
+
+            if(!loveStory){
+                findLove(this);
+            }
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
         funeral(this);
     }
@@ -76,6 +87,11 @@ public class BadGirl extends Thread implements Person {
     public void assignCosts(int cost) {
         lifePoints += cost;
 
+    }
+
+    @Override
+    public void setLoveStory(boolean flag) {
+        loveStory = flag;
     }
 
     public int happiness() {

@@ -12,10 +12,13 @@ public class Main {
         a = 15;
         b = 20;
         c = 3;
+
         GoodBoy goodBoy = new GoodBoy();
-        GoodGirl goodGirl = new GoodGirl();
+        GoodGirl badGirl = new GoodGirl();
+
         BadBoy badBoy = new BadBoy();
-        BadGirl badGirl = new BadGirl();
+        BadGirl goodGirl = new BadGirl();
+
         goodBoy.start();
         goodGirl.start();
         badBoy.start();

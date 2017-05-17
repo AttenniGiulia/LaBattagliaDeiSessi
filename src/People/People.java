@@ -69,11 +69,14 @@ public class People {
 
 
         if(typ.charAt(typ.length()-1)=='l'){
-            queueGirls.add(person);
+            if(!queueGirls.contains(person))
+                queueGirls.add(person);
         }
         else {
-            queueBoys.add(person);
+            if(!queueGirls.contains(person))
+                queueBoys.add(person);
         }
+
 
     }
 }

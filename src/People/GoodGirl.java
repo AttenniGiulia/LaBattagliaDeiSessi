@@ -39,13 +39,11 @@ public class GoodGirl extends Thread implements Person{
     }
 
     public void hasChild(Person father) throws CannotHaveChildrenException{
-        System.out.println(this.getClass() + " is trying to have a child");
         if(!(father instanceof GoodBoy) || MaxNumChildren == 0){
             System.out.println(father.getClass() + "is not appropriate");
             throw new CannotHaveChildrenException();
         }
 
-        // sleep
 
         if(inLove){
             System.out.println(this.getClass() + " is in love with" + inLoveWith);
@@ -75,15 +73,15 @@ public class GoodGirl extends Thread implements Person{
 
         System.out.println(this.getClass() + " e " + father.getClass() + " got a " + child.getClass());
         // Decremento numero massimo figli
-        father.hasChild(this);
         this.MaxNumChildren--;
 
-        // Assegnamento dei costi
-        lifePoints += a - b/2 - c;
 
 
     }
+    public void assignCosts(int cost) {
+        lifePoints += cost;
 
+    }
     public int happiness() {
         return lifePoints;
     }

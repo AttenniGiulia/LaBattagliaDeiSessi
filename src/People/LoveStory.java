@@ -1,4 +1,5 @@
 package People;
+import static People.People.*;
 
 /**
  * Created by Giulia on 15/05/2017.
@@ -33,7 +34,11 @@ public class LoveStory extends Thread {
     }
 
     private void resturant() {
-        if(G instanceof GoodGirl) wedding();
+        if(G instanceof GoodGirl){
+            G.assignCosts(-c);
+            B.assignCosts(-c);
+            wedding();
+        }
         else room();
     }
 
@@ -42,16 +47,29 @@ public class LoveStory extends Thread {
     private void room() {
 
         try {
+            B.hasChild(G);
             G.hasChild(B);
+            G.assignCosts(a);
+            B.assignCosts(a);
+            if(B instanceof GoodBoy){
+                G.assignCosts(-b/2);
+                B.assignCosts(-b/2);
+            }
+            else{
+                G.assignCosts(-b);
+            }
         } catch (CannotHaveChildrenException e) {
             e.printStackTrace();
         }
     }
     private void wedding() {
         // fanno tutti i figli
-        while (G.fertility()) {
+        while (G.fertility() && B.fertility()) {
             try {
+                B.hasChild(G);
                 G.hasChild(B);
+                G.assignCosts(a - b/2);
+                B.assignCosts(a - b/2);
             } catch (CannotHaveChildrenException e) {
                 e.printStackTrace();
             }

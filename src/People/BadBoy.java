@@ -32,14 +32,14 @@ public class BadBoy extends Thread implements Person {
         else return false;
     }
 
-    public void hasChild(Person person) throws CannotHaveChildrenException {
-        if(MaxNumChildren==0) throw new CannotHaveChildrenException();
+    public void hasChild(Person mother) throws CannotHaveChildrenException {
+        if (MaxNumChildren == 0) throw new CannotHaveChildrenException();
         MaxNumChildren--;
-        // Assegnamento costi
-        System.out.println("I got "+ a + " thanks to " + person.getClass());
-        lifePoints += a;
     }
+    public void assignCosts(int cost) {
+        lifePoints += cost;
 
+    }
     public int happiness() {
         return lifePoints;
     }

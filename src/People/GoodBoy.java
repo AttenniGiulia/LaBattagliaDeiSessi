@@ -37,22 +37,26 @@ public class GoodBoy extends Thread implements Person{
     }
 
     @Override
-    public void hasChild(Person person) throws CannotHaveChildrenException {
+    public void hasChild(Person mother) throws CannotHaveChildrenException {
         if(inLove){
             System.out.println(this.getClass() + " is in love with" + inLoveWith);
 
-            if(person != inLoveWith) throw new CannotHaveChildrenException();
+            if(mother != inLoveWith) throw new CannotHaveChildrenException();
         }
         else{
             inLove = true;
-            inLoveWith = person;
+            inLoveWith = mother;
             System.out.println(this.getClass() + " now is in love with" + inLoveWith);
         }
         if(MaxNumChildren==0) throw new CannotHaveChildrenException();
         MaxNumChildren--;
-        //assegnare costi
-        if (person instanceof GoodGirl) lifePoints += a - b/2 - c;
-        else lifePoints += a - b/2;
+
+    }
+
+    @Override
+    public void assignCosts(int cost) {
+        lifePoints += cost;
+
     }
 
     public int happiness() {

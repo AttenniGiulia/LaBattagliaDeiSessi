@@ -14,8 +14,12 @@ public class People {
 
     static int a, b, c;
 
+    public  static void setParameters(int A, int B, int C){
+        a = A;
+        b = B;
+        c = C;
+    }
     public static void childHasBorn(Person person){
-
 
         switch(person.getClass().getSimpleName()){
             case "GoodBoy":

@@ -1,5 +1,6 @@
 package People;
 import static People.People.a;
+import static People.People.childHasBorn;
 import static People.People.funeral;
 /**
  * Created by Giulia on 05/05/2017.
@@ -19,6 +20,7 @@ public class BadBoy extends Thread implements Person {
 
     public void run() {
         long bornTime = System.currentTimeMillis();
+        childHasBorn(this);
         while (System.currentTimeMillis() - bornTime < lifeTime) {
 
         }

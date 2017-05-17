@@ -23,6 +23,7 @@ public class GoodGirl extends Thread implements Person{
     }
     public void run(){
         long bornTime = System.currentTimeMillis();
+        childHasBorn(this);
         while (System.currentTimeMillis() - bornTime < lifeTime) {
 
         }
@@ -70,7 +71,6 @@ public class GoodGirl extends Thread implements Person{
             //false = female
             child = new GoodGirl();
         }
-        childHasBorn(child);
         child.start();
 
         System.out.println(this.getClass() + " e " + father.getClass() + " got a " + child.getClass());

@@ -23,6 +23,7 @@ public class GoodBoy extends Thread implements Person{
         long bornTime = System.currentTimeMillis();
         childHasBorn(this);
         while (System.currentTimeMillis() - bornTime < lifeTime) {
+            findLove(this);
 
         }
         funeral(this);

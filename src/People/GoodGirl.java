@@ -25,7 +25,7 @@ public class GoodGirl extends Thread implements Person{
         long bornTime = System.currentTimeMillis();
         childHasBorn(this);
         while (System.currentTimeMillis() - bornTime < lifeTime) {
-
+            findLove();
         }
         funeral(this);
     }

@@ -21,7 +21,7 @@ public class MeetingPoint {
         if(G != null && B != null) return true;
         else return false;
     }
-    public synchronized void theLine(Person person){
+    public void theLine(Person person){
         String typ = person.getClass().getSimpleName();
         if (typ.charAt(typ.length()-1) == 'l'){
             queueGirls.add(person);
@@ -36,7 +36,7 @@ public class MeetingPoint {
             e.printStackTrace();
         }
     }
-    public synchronized void entry() throws InterruptedException{
+    public void entry() throws InterruptedException{
         while(!queueGirls.isEmpty() || !queueBoys.isEmpty()){
             while (isBusy()){
                 wait();

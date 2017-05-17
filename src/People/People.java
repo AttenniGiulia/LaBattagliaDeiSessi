@@ -11,7 +11,7 @@ public class People {
     public static Set<GoodGirl> GoodGirlsInTheWorld = new HashSet<GoodGirl>();
     public static Set<BadBoy> BadBoysInTheWorld = new HashSet<BadBoy>();
     public static Set<BadGirl> BadGirlsInTheWorld = new HashSet<BadGirl>();
-
+    public static MeetingPoint meetingPoint = new MeetingPoint();
     static int a, b, c;
 
     public  static void setParameters(int A, int B, int C){
@@ -59,5 +59,9 @@ public class People {
                 break;
         }
         System.out.println(person.getClass().getSimpleName() + " has died");
+    }
+
+    public static void findLove(Person person){
+        meetingPoint.theLine(person);
     }
 }

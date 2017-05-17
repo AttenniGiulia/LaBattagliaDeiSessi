@@ -11,26 +11,19 @@ public class GoodGirl extends Thread implements Person{
     private int MaxNumChildren;
     private int lifeTime;
     private int lifePoints;
-    private boolean inLove;
-    private Person inLoveWith;
 
-    GoodGirl(){
+    public GoodGirl(){
         MaxNumChildren = 3;
         lifePoints = 0;
         lifeTime = 15000;
-        inLove = false;
-        inLoveWith = null;
     }
     public void run(){
         long bornTime = System.currentTimeMillis();
         childHasBorn(this);
         while (System.currentTimeMillis() - bornTime < lifeTime) {
-            findLove();
+            findLove(this);
         }
         funeral(this);
-    }
-    public boolean isInLove(){
-        return inLove;
     }
 
     public boolean fertility(){
@@ -42,18 +35,6 @@ public class GoodGirl extends Thread implements Person{
         if(!(father instanceof GoodBoy) || MaxNumChildren == 0){
             System.out.println(father.getClass() + "is not appropriate");
             throw new CannotHaveChildrenException();
-        }
-
-
-        if(inLove){
-            System.out.println(this.getClass() + " is in love with" + inLoveWith);
-
-            if(father != inLoveWith) throw new CannotHaveChildrenException();
-        }
-        else{
-            inLove = true;
-            inLoveWith = father;
-            System.out.println(this.getClass() + " now is in love with" + inLoveWith);
         }
 
 

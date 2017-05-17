@@ -1,5 +1,7 @@
 package People;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 
@@ -11,7 +13,8 @@ public class People {
     public static Set<GoodGirl> GoodGirlsInTheWorld = new HashSet<GoodGirl>();
     public static Set<BadBoy> BadBoysInTheWorld = new HashSet<BadBoy>();
     public static Set<BadGirl> BadGirlsInTheWorld = new HashSet<BadGirl>();
-    public static MeetingPoint meetingPoint = new MeetingPoint();
+    public static Queue<Person> queueGirls = new LinkedList<Person>();
+    public static Queue<Person> queueBoys = new LinkedList<Person>();
     static int a, b, c;
 
     public  static void setParameters(int A, int B, int C){
@@ -62,6 +65,15 @@ public class People {
     }
 
     public static void findLove(Person person){
-        meetingPoint.theLine(person);
+        String typ = person.getClass().getSimpleName();
+
+
+        if(typ.charAt(typ.length()-1)=='l'){
+            queueGirls.add(person);
+        }
+        else {
+            queueBoys.add(person);
+        }
+
     }
 }

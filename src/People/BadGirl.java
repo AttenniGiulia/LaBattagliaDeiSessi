@@ -12,9 +12,9 @@ public class BadGirl extends Thread implements Person {
     private int MaxNumChildren;
     private int lifeTime;
     private int lifePoints;
-    private boolean childWithBad;
+    public boolean childWithBad;
 
-    BadGirl(){
+    public BadGirl(){
         MaxNumChildren = 5;
         lifePoints = 0;
         lifeTime = 15000;
@@ -25,7 +25,7 @@ public class BadGirl extends Thread implements Person {
         long bornTime = System.currentTimeMillis();
         childHasBorn(this);
         while (System.currentTimeMillis() - bornTime < lifeTime) {
-            findLove();
+            findLove(this);
         }
         funeral(this);
     }

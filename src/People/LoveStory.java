@@ -28,18 +28,16 @@ public class LoveStory extends Thread {
     }
 
     private void bar() {
-        if (G instanceof BadGirl && B instanceof BadBoy) room();
-        if (G instanceof GoodGirl && B instanceof GoodBoy) resturant();
-        if (G instanceof BadGirl && B instanceof GoodBoy) resturant();
+        if (G instanceof BadGirl && B instanceof BadBoy) room(); //BB e BG vanno subito nella stanza
+        if (G instanceof GoodGirl && B instanceof GoodBoy) resturant(); //GG e GB passano per il ristorante e poi si sposano
+        if (G instanceof BadGirl && B instanceof GoodBoy) wedding(); //GB vuole sposare BG ma BG potrebbe dire di no
     }
 
     private void resturant() {
-        if(G instanceof GoodGirl){
-            G.assignCosts(-c);
-            B.assignCosts(-c);
-            wedding();
-        }
-        else room();
+        G.assignCosts(-c);
+        B.assignCosts(-c);
+        wedding();
+
     }
 
 
@@ -52,6 +50,7 @@ public class LoveStory extends Thread {
             G.assignCosts(a);
             B.assignCosts(a);
             if(B instanceof GoodBoy){
+                //nonostante BG non voglia sposare GB quest'ultimo sceglie di affrontare il costo di avere un figlio in ogni caso
                 G.assignCosts(-b/2);
                 B.assignCosts(-b/2);
             }
@@ -59,20 +58,39 @@ public class LoveStory extends Thread {
                 G.assignCosts(-b);
             }
         } catch (CannotHaveChildrenException e) {
-            e.printStackTrace();
         }
     }
     private void wedding() {
-        // fanno tutti i figli
-        while (G.fertility() && B.fertility()) {
-            try {
-                B.hasChild(G);
-                G.hasChild(B);
-                G.assignCosts(a - b/2);
-                B.assignCosts(a - b/2);
-            } catch (CannotHaveChildrenException e) {
-                e.printStackTrace();
+
+        if(G instanceof BadGirl){
+            if(!(((BadGirl) G).childWithBad)){
+                room(); // BG non è ancora rimasta fregata da BB quindi non sa il richio che potrebbe correre e quindi rifiuta la poroposta di matrimonio ma non perde l'occasione per procreare
+            }
+            else{
+                // una volta sposati si hanno figli finchè si è fertili
+                while (G.fertility() && B.fertility()) {
+                    try {
+                        B.hasChild(G);
+                        G.hasChild(B);
+                        G.assignCosts(a - b/2);
+                        B.assignCosts(a - b/2);
+                    } catch (CannotHaveChildrenException e) {
+                    }
+                }
             }
         }
+        else{
+            // una volta sposati si hanno figli finchè si è fertili
+            while (G.fertility() && B.fertility()) {
+                try {
+                    B.hasChild(G);
+                    G.hasChild(B);
+                    G.assignCosts(a - b/2);
+                    B.assignCosts(a - b/2);
+                } catch (CannotHaveChildrenException e) {
+                }
+            }
+        }
+
     }
 }

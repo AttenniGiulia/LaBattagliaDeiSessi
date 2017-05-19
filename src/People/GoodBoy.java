@@ -6,6 +6,12 @@ import static People.People.*;
  * Created by Giulia on 04/05/2017.
  */
 public class GoodBoy extends Thread implements Person{
+    public void run(){
+        childHasBorn(this);
+        findLove(this);
+        findLove(this);
+        funeral(this);
+    }
     @Override
     public void clone(Person father) throws CannotHaveChildrenException {
         int gain = calculateGain(father);

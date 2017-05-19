@@ -65,7 +65,7 @@ public class People {
 
     public static void findLove(Person person){
         String typ = person.getClass().getSimpleName();
-
+        System.out.println(person.getClass().getSimpleName() + " is in the queue");
 
         if(typ.charAt(typ.length()-1)=='l'){
             if(!queueGirls.contains(person))

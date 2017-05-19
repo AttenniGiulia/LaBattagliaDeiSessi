@@ -9,6 +9,12 @@ import static People.People.*;
  */
 public class GoodGirl extends Thread implements Person{
 
+    public void run(){
+        childHasBorn(this);
+        findLove(this);
+        findLove(this);
+        funeral(this);
+    }
 
     @Override
     public void clone(Person father) throws CannotHaveChildrenException {

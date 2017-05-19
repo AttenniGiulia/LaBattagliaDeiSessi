@@ -14,15 +14,12 @@ public class Main {
         c = 3;
 
         GoodBoy goodBoy = new GoodBoy();
-        GoodGirl badGirl = new GoodGirl();
+        GoodGirl goodGirl  = new GoodGirl();
 
-        BadBoy badBoy = new BadBoy();
-        BadGirl goodGirl = new BadGirl();
 
         goodBoy.start();
         goodGirl.start();
-        badBoy.start();
-        badGirl.start();
+
 
         MeetingPoint meetingPoint = new MeetingPoint();
         meetingPoint.start();

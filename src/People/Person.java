@@ -9,12 +9,7 @@ import static People.People.funeral;
  */
 public interface Person{
 
-    default void run(){
-        childHasBorn(this);
-        findLove(this);
-        findLove(this);
-        funeral(this);
-    }
+    void run();
     void clone(Person p) throws CannotHaveChildrenException;
     int calculateGain(Person p);
 }

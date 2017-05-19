@@ -43,7 +43,6 @@ public class People {
         System.out.println(person.getClass().getSimpleName() + " has born");
     }
     public static void funeral(Person person){
-        System.out.println(person.getClass().getSimpleName() +  " got " + person.happiness());
 
         switch(person.getClass().getSimpleName()){
             case "GoodBoy":

@@ -6,54 +6,21 @@ import static People.People.*;
  * Created by Giulia on 04/05/2017.
  */
 public class GoodBoy extends Thread implements Person{
-    private int MaxNumChildren;
-    private int lifeTime;
-    private int lifePoints;
-    public boolean loveStory;
+    @Override
+    public void clone(Person father) throws CannotHaveChildrenException {
+        int gain = calculateGain(father);
 
-    public GoodBoy(){
-        MaxNumChildren = 3;
-        lifeTime = 15000;
-        lifePoints = 0;
-        loveStory = false;
-    }
-    public void run(){
-        long bornTime = System.currentTimeMillis();
-        childHasBorn(this);
-        System.out.println("Sono GB e cerco amore");
-        findLove(this);
-        while (System.currentTimeMillis() - bornTime < lifeTime && fertility()) {
-
-
+        for (int i = 0; i<gain; i++){
+            GoodBoy clone = new GoodBoy();
+            clone.start();
         }
-        funeral(this);
-    }
-
-    public boolean fertility(){
-        if(MaxNumChildren != 0) return true;
-        else return false;
-    }
-
-    @Override
-    public void hasChild(Person mother) throws CannotHaveChildrenException {
-
-        if(MaxNumChildren==0) throw new CannotHaveChildrenException();
-        MaxNumChildren--;
 
     }
 
     @Override
-    public void assignCosts(int cost) {
-        lifePoints += cost;
-
+    public int calculateGain(Person father) {
+        if (father instanceof GoodGirl) return a-b/2;
+        if (father instanceof BadGirl) return a-b;
+        return 0;
     }
-
-    public int happiness() {
-        return lifePoints;
-    }
-    @Override
-    public void setLoveStory(boolean flag) {
-        loveStory = flag;
-    }
-
 }

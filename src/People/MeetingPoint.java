@@ -7,12 +7,8 @@ import static People.People.queueGirls;
  * Created by Giulia on 17/05/2017.
  */
 public class MeetingPoint extends Thread{
-
-    public static final int time = 100;
-
     private Person G;
     private Person B;
-    Object bouncer;
 
     public MeetingPoint(){
         G = null;
@@ -24,30 +20,23 @@ public class MeetingPoint extends Thread{
         else return false;
     }
 
-
     public void run(){
         while(true){
 
             while((queueBoys.isEmpty() || queueGirls.isEmpty()) || isBusy()){
-                try {
-                    sleep(100);
-                } catch (InterruptedException e) {
-                }
             }
             B = queueBoys.remove();
             G = queueGirls.remove();
-            LoveStory loveStory = new LoveStory(G,B);
-            loveStory.start();
+            try {
+                G.clone(B);
+                B.clone(G);
+
+            } catch (CannotHaveChildrenException e) {
+            }
+
             G = null;
             B = null;
 
-
-
-
-            try {
-                sleep(time*10);
-            } catch (InterruptedException e) {
-            }
         }
 
     }

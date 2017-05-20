@@ -21,19 +21,14 @@ public class GoodGirl extends Thread implements Person{
 
         if(!(father instanceof GoodBoy)) throw new CannotHaveChildrenException();
 
-        int gain = calculateGain(father);
 
-        for(int i=0; i<gain; i++){
+
+        for(int i=0; i<GGGB; i++){
             GoodGirl clone = new GoodGirl();
             clone.start();
         }
 
 
-    }
-
-    @Override
-    public int calculateGain(Person father) {
-        return a-(b/2)-c;
     }
 
 }

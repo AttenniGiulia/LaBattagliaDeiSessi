@@ -15,7 +15,8 @@ public class People {
     public static Set<BadGirl> BadGirlsInTheWorld = new HashSet<BadGirl>();
     public static Queue<Person> queueGirls = new LinkedList<Person>();
     public static Queue<Person> queueBoys = new LinkedList<Person>();
-    static int a, b, c;
+    public static int a, b, c;
+    public static int GGGB, BGGB, BGBB, BBBG;
 
     public  static void setParameters(int A, int B, int C){
         a = A;
@@ -78,4 +79,14 @@ public class People {
 
 
     }
+
+    public static void calculateMaxChildren(){
+        GGGB = 0;
+        BGGB = 0;
+        BGBB = 0;
+        BBBG = 0;
+
+    }
+
+
 }
